@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humayra Akter | My World</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Quicksand:wght@500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        :root {
+            /* Palette inspired by the beautiful Purple Feathers theme + Premium Gold */
+            --bright-neon-purple: #D169E6; 
+            --soft-lavender: #E1BEE7;
+            --pure-white: #FFFFFF;
+            
+            /* Enhanced Paragraph Brightness */
+            --paragraph-bright: #FFFFFF;
+            --glass-bg: rgba(27, 12, 38, 0.7);
+            
+            /* Classy Golden Glow Variables */
+            --deep-gold: #FFD700;
+            --bright-gold: #FFF59D;
+            --strip-light-gold: rgba(255, 215, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-image: url('Purple_Feathers.png');
+            background-size: 160% auto; 
+            background-position: left top; 
+            background-attachment: fixed; 
+            background-repeat: repeat-y;
+            color: var(--paragraph-bright);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Ambient Glassmorphism Overlay directly over the feather background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(20, 10, 30, 0.45); 
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px); 
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1B0C26;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--deep-gold);
+            border-radius: 10px;
+        }
+
+        /* Floating Cute Particles Background */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .heart-particle {
+            position: absolute;
+            color: var(--soft-lavender);
+            opacity: 0.3;
+            animation: floatUp 6s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Glassmorphism Sticky Top Gift Banner */
+        .gift-banner {
+            position: fixed;
+            top: -65px;
+            left: 0;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            color: var(--pure-white);
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            z-index: 2000;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .gift-banner.show {
+            top: 0;
+        }
+
+        /* Non-sticky Header */
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px 10px 20px;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 34px;
+            font-weight: 700;
+            color: var(--bright-gold);
+            letter-spacing: 1px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: calc(100vh - 90px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 10% 120px 10%;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 58%;
+        }
+
+        /* --- CLASSY & SMOOTHED TYPEWRITING FOR HERO HEADING --- */
+        .hero-content h1 {
+            font-size: 4rem;
+            color: var(--bright-gold);
+            margin-bottom: 5px;
+            line-height: 1.3;
+            font-weight: 700;
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 8px;
+            white-space: nowrap;
+            overflow: hidden; 
+            border-right: 3px solid var(--deep-gold); 
+            
+            animation: typing 5.5s steps(30, end) infinite alternate,
+                       blink-caret 0.75s step-end infinite;
+            
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.7), 
+                         0 0 20px rgba(255, 215, 0, 0.5), 
+                         0 0 35px rgba(255, 165, 0, 0.3),
+                         0 4px 10px rgba(0,0,0,0.7);
+            
+            background: linear-gradient(90deg, transparent, var(--strip-light-gold), transparent);
+            box-shadow: inset 0 1px rgba(255, 215, 0, 0.2), 
+                        inset 0 -1px rgba(255, 215, 0, 0.2),
+                        0 0 15px rgba(255, 215, 0, 0.1);
+            letter-spacing: 1px;
+        }
+
+        /* --- NEW PREMIUM CURSIVE SUBTITLE STYLING --- */
+        .hero-subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.1rem;
+            color: var(--soft-lavender);
+            margin-bottom: 35px;
+            padding-left: 35px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: block;
+            text-shadow: 0 0 12px rgba(225, 190, 231, 0.7), 0 2px 6px rgba(0,0,0,0.85);
+        }
+
+        /* --- HIGHLY BRIGHTENED PARAGRAPH TEXT STYLING --- */
+        .hero-content p {
+            font-size: 1.45rem;
+            margin-bottom: 30px;
+            line-height: 1.9;
+            color: var(--paragraph-bright);
+            font-weight: 600;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid var(--bright-gold);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.2);
+            animation: floatImage 6s ease-in-out infinite;
+        }
+
+        @keyframes floatImage {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Minimal Interactive Animated Scroll Arrow */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--bright-gold);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: 0.3s;
+            opacity: 0.8;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .scroll-indicator:hover {
+            opacity: 1;
+            color: var(--pure-white);
+        }
+
+        .scroll-indicator i {
+            animation: bounceArrow 2s infinite;
+        }
+
+        @keyframes bounceArrow {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-12px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Section Title Styling */
+        section {
+            padding: 100px 10%;
+            text-align: center;
+        }
+
+        /* --- SLOWED DOWN TYPEWRITING FOR SECTION HEADINGS --- */
+        .section-title {
+            font-size: 2.8rem;
+            color: var(--bright-gold);
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+            padding: 12px 40px;
+            border-radius: 10px;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid var(--deep-gold);
+
+            animation: typing 6s steps(40, end) infinite alternate,
+                       blink-caret 0.75s step-end infinite;
+            
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7), 
+                         0 0 25px rgba(255, 215, 0, 0.4), 
+                         0 4px 10px rgba(0,0,0,0.6);
+            
+            background: linear-gradient(90deg, transparent, var(--strip-light-gold), transparent);
+            box-shadow: inset 0 1px 0 rgba(255, 215, 0, 0.25), 
+                        inset 0 -1px 0 rgba(255, 215, 0, 0.25),
+                        0 0 20px rgba(255, 215, 0, 0.15);
+        }
+
+        /* --- TYPEWRITING KEYFRAMES --- */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--deep-gold); }
+        }
+
+        /* Smooth Golden Line Under Titles */
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--deep-gold), transparent);
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--deep-gold);
+        }
+
+        .section-title::after {
+            content: '✨';
+            position: absolute;
+            bottom: -32px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.3rem;
+            text-shadow: 0 0 5px var(--deep-gold);
+        }
+
+        /* Moments Section */
+        .personal-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .personal-card {
+            background: transparent;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border: 6px solid var(--pure-white);
+            transition: 0.3s;
+            width: 300px;
+            height: 533px; 
+        }
+
+        .personal-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(255, 215, 0, 0.25);
+            border-color: var(--bright-gold);
+        }
+
+        .personal-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Artworks Section */
+        .artwork-section {
+            padding: 80px 5%;
+            margin: 20px 0;
+        }
+
+        .artwork-section p {
+            font-size: 1.45rem;
+            max-width: 750px;
+            margin: 0 auto 30px auto;
+            line-height: 1.8;
+            color: var(--paragraph-bright);
+            font-weight: 600;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .artwork-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .artwork-item {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            height: 280px;
+            border: 5px solid var(--pure-white);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .artwork-item:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.25);
+            border-color: var(--bright-gold);
+        }
+
+        .artwork-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Story/Animation Section */
+        .listening-animation-section p {
+            font-size: 1.45rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            line-height: 1.8;
+            color: var(--paragraph-bright);
+            font-weight: 600;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        /* --- FIXED: TYPO RESOLVED & SPACE DISTRIBUTED BETWEEN ICONS --- */
+        .animation-container {
+            display: flex;
+            justify-content: space-around; /* Corrected from justify-space */
+            align-items: center;
+            max-width: 750px;
+            margin: 60px auto;
+            position: relative;
+            height: 200px;
+            width: 100%;
+        }
+
+        .actor {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            width: 40%;
+            text-align: center;
+        }
+
+        .actor .vivid-icon {
+            font-size: 5rem;
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.4));
+        }
+
+        .actor p {
+            margin-top: 18px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: var(--paragraph-bright);
+            text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+        }
+
+        .actor span {
+            display: block;
+            font-weight: 700;
+            font-size: 1.35rem;
+            color: var(--bright-gold);
+            margin-top: 6px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        #megh .vivid-icon {
+            color: #E1BEE7; 
+            filter: drop-shadow(0 8px 25px rgba(233, 30, 99, 0.3));
+            animation: floatingCloud 4s ease-in-out infinite;
+        }
+
+        @keyframes floatingCloud {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        #humayra-heart .vivid-icon {
+            color: #FF2A6D; 
+            filter: drop-shadow(0 8px 25px rgba(255, 42, 109, 0.5));
+            animation: deepPulse 1.2s infinite cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        @keyframes deepPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        /* Moving thoughts animation particles */
+        .thought-bubble {
+            position: absolute;
+            font-size: 1.05rem;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(5px);
+            padding: 8px 18px;
+            border-radius: 20px;
+            color: var(--pure-white);
+            font-weight: 600;
+            z-index: 1;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* FIXED ANIMATION: Smooth transition across the wider space */
+        @keyframes travelToHeart {
+            0% { left: 20%; top: 25%; opacity: 0; transform: scale(0.6); }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { left: 70%; top: 25%; opacity: 0; transform: scale(1.2); }
+        }
+
+        /* Call To Action Button */
+        .talk-trigger-btn {
+            padding: 16px 45px;
+            background: linear-gradient(45deg, #FFD700, #4A148C);
+            color: var(--pure-white);
+            border: none;
+            border-radius: 35px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.25);
+            transition: 0.3s all;
+            animation: buttonGlow 2.5s infinite;
+        }
+
+        .talk-trigger-btn:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.45);
+        }
+
+        @keyframes buttonGlow {
+            0% { box-shadow: 0 10px 30px rgba(255, 215, 0, 0.25), 0 0 0 0 rgba(255, 215, 0, 0.4); }
+            70% { box-shadow: 0 10px 30px rgba(255, 215, 0, 0.25), 0 0 0 18px rgba(255, 215, 0, 0); }
+            100% { box-shadow: 0 10px 30px rgba(255, 215, 0, 0.25), 0 0 0 0 rgba(255, 215, 0, 0); }
+        }
+
+        /* Letter / Dedication Section */
+        .letter-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-left: 6px solid var(--deep-gold);
+            border-radius: 0 20px 20px 0;
+            padding: 55px 45px;
+            max-width: 780px;
+            margin: 50px auto;
+            text-align: left;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            position: relative;
+        }
+
+        .letter-container::before {
+            content: '“';
+            font-size: 6.5rem;
+            color: rgba(255, 215, 0, 0.15);
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .letter-text {
+            font-size: 1.4rem;
+            line-height: 2;
+            color: var(--paragraph-bright);
+            font-weight: 600;
+            white-space: pre-line;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+        }
+
+        .letter-sign {
+            margin-top: 35px;
+            text-align: right;
+            font-size: 1.45rem;
+            font-weight: 600;
+            color: var(--bright-gold);
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.94);
+            z-index: 3000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 8px;
+            border: 4px solid var(--bright-gold);
+            box-shadow: 0 5px 25px rgba(255, 215, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.active .lightbox-img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--deep-gold);
+        }
+
+        /* Main Footer */
+        footer {
+            padding: 40px 20px 20px 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: var(--paragraph-bright);
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        footer i {
+            color: #FF2A6D;
+        }
+
+        /* Camouflage Studio Branding */
+        .studio-branding {
+            text-align: center;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.08); 
+            padding: 0px 20px 30px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            user-select: none;
+        }
+
+        /* Mobile Responsive adjustments */
+        @media (max-width: 768px) {
+            body { background-size: 280% auto; } 
+            .hero { flex-direction: column; text-align: center; padding: 40px 5% 80px 5%; }
+            .hero-content { max-width: 100%; margin-bottom: 40px; }
+            .hero-content h1 { font-size: 2.2rem; padding: 8px 15px; white-space: normal; animation: none; border-right: none; }
+            .hero-subtitle { font-size: 1.6rem; padding-left: 0; text-align: center; margin-bottom: 20px; }
+            .section-title { font-size: 1.8rem; padding: 8px 20px; white-space: normal; animation: none; border-right: none; }
+            .personal-card { width: 270px; height: 480px; }
+            .letter-container { padding: 35px 20px; }
+            .letter-text { font-size: 1.25rem; }
+            /* FIXED FOR MOBILE: Changes alignment to vertical to perfectly fit small screens */
+            .animation-container { height: auto; flex-direction: column; gap: 40px; margin: 30px auto; }
+            .actor { width: 100%; }
+            @keyframes travelToHeart {
+                0% { left: 50%; top: 10%; opacity: 0; transform: translateX(-50%) scale(0.6); }
+                20% { opacity: 1; }
+                80% { opacity: 1; }
+                100% { left: 50%; top: 75%; opacity: 0; transform: translateX(-50%) scale(1.2); }
+            }
+            .actor p { font-size: 1.05rem; }
+            .actor span { font-size: 1.15rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Scroll Surprise Top Sticky Banner (Glassmorphism Effect) -->
+    <div class="gift-banner" id="giftBanner">
+        A Gift from your Megh ☁️💙
+    </div>
+
+    <!-- Cute Elements Floating Background Animation -->
+    <div class="hearts-bg" id="heartsBg"></div>
+
+    <!-- Non-sticky Header that moves away on scroll -->
+    <header class="animate__animated animate__fadeInDown">
+        <div class="logo">Humayra🌸</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content animate__animated animate__fadeInLeft">
+            <h1>হুমায়রা আক্তার</h1>
+            <span class="hero-subtitle">~ Queen of my Heart ~</span>
+            <p> একজন খুবই মিষ্টি আর প্রাণবন্ত মানুষ।</br> বই পড়তে ভালোবাসে, নতুন জায়গা ঘুরে দেখতে ভালোবাসে, আর নিজের হাতে রান্না করতে ভালোবাসে।<br><br>তবে তার সবচেয়ে সুন্দর প্রতিভা হলো স্কেচিং। একটা সাধারণ পেন্সিল আর কাগজ দিয়ে সে এমন সব ছবি আঁকে যেগুলো দেখলে বারবার তাকিয়ে থাকতে ইচ্ছে করে</p>
+        </div>
+        <div class="hero-image-container animate__animated animate__fadeInRight">
+            <img src="https://lh3.googleusercontent.com/d/1098bjGMgy5uMYEyTVvf95uHhS1i4Itv9" alt="Humayra Akter" class="hero-img">
+        </div>
+
+        <!-- Minimal Animated Scroll Arrow Indicator Only -->
+        <a href="#moments" class="scroll-indicator">
+            <i class="fas fa-angle-double-down"></i>
+        </a>
+    </section>
+
+    <!-- Moments Section (9:16 Portrait Cards) -->
+    <section id="moments">
+        <h2 class="section-title">Moments</h2>
+        <div class="personal-gallery">
+			<div class="personal-card">
+                <img src="https://lh3.googleusercontent.com/d/1RhHaoj6MeagR9ejpKJECpQDuypTwAAZl" alt="Humayra Moment 2">
+            </div>
+			
+            <div class="personal-card">
+                <img src="https://lh3.googleusercontent.com/d/16riqhdUnv3r5sv2gpF_QnsZNhKQuTLXZ" alt="Humayra Moment 1">
+            </div>
+           
+			<div class="personal-card">
+                <img src="https://lh3.googleusercontent.com/d/1RhHaoj6MeagR9ejpKJECpQDuypTwAAZl" alt="Humayra Moment 2">
+            </div>
+        </div>
+    </section>
+
+    <!-- Artworks Section -->
+    <section class="artwork-section">
+        <h2 class="section-title">Artworks</h2>
+        <p>
+            পেন্সিলের প্রতিটি সূক্ষ্ম টানে যখন সাদা কাগজ জীবন্ত হয়ে ওঠে, তখনই প্রকাশ পায় হুমায়রা'র ভেতরের আসল শিল্পসত্তা। অসাধারণ কিছু Pencil Sketch এর নমুনা এখানে সাজালাম। 
+        </p>
+        
+        <div class="artwork-grid">
+            <div class="artwork-item" onclick="openLightbox(this)"><img src="https://lh3.googleusercontent.com/d/1ADERR28Kc3xFAaTIakPoBd29BiiXl72T" alt="Sketch 1"></div>
+            <div class="artwork-item" onclick="openLightbox(this)"><img src="https://lh3.googleusercontent.com/d/1FZwuuNflPG0u5fwRD98MPM4Lr0FYE9QC" alt="Sketch 2"></div>
+            <div class="artwork-item" onclick="openLightbox(this)"><img src="https://lh3.googleusercontent.com/d/1Mr8Q8Gt7cRvB5T9utUSksoai0z5NVZIg" alt="Sketch 3"></div>
+            <div class="artwork-item" onclick="openLightbox(this)"><img src="https://lh3.googleusercontent.com/d/1OhcyfIfdAX0uAVGVAzOmd7GHjrPbD8B8" alt="Sketch 4"></div>
+            <div class="artwork-item" onclick="openLightbox(this)"><img src="https://lh3.googleusercontent.com/d/1Ut_QboFfD4KhHyHUev-jvN0-IIAQd4F8" alt="Sketch 5"></div>
+            <div class="artwork-item" onclick="openLightbox(this)"><img src="https://lh3.googleusercontent.com/d/1VqXhe1UgDTEu-MKt-_QD-Ah1E4XD_vQe" alt="Sketch 6"></div>
+            <div class="artwork-item" onclick="openLightbox(this)"><img src="https://lh3.googleusercontent.com/d/1ZtDVlTHIUFTVgc2QiGqygUrS-LLW5NEt" alt="Sketch 7"></div>
+            <div class="artwork-item" onclick="openLightbox(this)"><img src="https://lh3.googleusercontent.com/d/1bsj9HYMFKNek-i8WDysSspaOeP-C5Yz4" alt="Sketch 8"></div>
+            <div class="artwork-item" onclick="openLightbox(this)"><img src="https://lh3.googleusercontent.com/d/1i6rtjOfQnAyfzVSbj6oiD_1k1e-oiJRO" alt="Sketch 9"></div>
+            <div class="artwork-item" onclick="openLightbox(this)"><img src="https://lh3.googleusercontent.com/d/1ishL387Fp1jb05PuR8XJEIc_3q6sVktw" alt="Sketch 10"></div>
+            <div class="artwork-item" onclick="openLightbox(this)"><img src="https://lh3.googleusercontent.com/d/1jKqBZnPVmyAjWyPykNL1cuwXdbuz3UyP" alt="Sketch 11"></div>
+            <div class="artwork-item" onclick="openLightbox(this)"><img src="https://lh3.googleusercontent.com/d/1qiQtbFGJ4Z1TCzDjfsag5zpTLeKrErNF" alt="Sketch 12"></div>
+            <div class="artwork-item" onclick="openLightbox(this)"><img src="https://lh3.googleusercontent.com/d/1y3XPmoKlXBn_ocTtNiD67aNvarrsB2Rd" alt="Sketch 13"></div>
+            <div class="artwork-item" onclick="openLightbox(this)"><img src="https://lh3.googleusercontent.com/d/1zWLIVFEXdvSElZs8lHHUSSb8i4itOUY5" alt="Sketch 14"></div>
+        </div>
+    </section>
+
+    <!-- Custom Story Animation Section -->
+    <section class="listening-animation-section">
+        <h2 class="section-title">কথক মেঘ ও তার প্রিয় শ্রোতা</h2>
+        <p>আমি অনবরত আমার সারাদিনের সুখ, দুঃখ, স্বপ্ন আর গল্প বুনে যাই... আর মেঘবতী পরম যত্নে ও গভীর মমতায় তার হৃদয়ে সেগুলো আগলে রাখে।</p>
+        
+        <div class="animation-container" id="animationArea">
+            <div class="actor" id="megh">
+                <i class="fas fa-cloud vivid-icon"></i>
+                <p>বকবক করা <br><span>মেঘ (Megh)💬</span></p>
+            </div>
+            
+            <div class="actor" id="humayra-heart">
+                <i class="fas fa-heart vivid-icon"></i>
+                <p>পরম যত্নে আগলে রাখা হৃদয় <br><span>হুমায়রা (Humayra)🌸</span></p>
+            </div>
+        </div>
+        
+        <button class="talk-trigger-btn" onclick="startConversation()">কথা বলা শুরু করো 💬</button>
+    </section>
+
+    <!-- Dedication Section / The Letter -->
+    <section>
+        <h2 class="section-title">তোমার জন্য একটি চিঠি</h2>
+        <div class="letter-container">
+            <div class="letter-text">
+                "তুমি আমার জীবনের সেই মানুষ, যার কাছে আমি নির্দ্বিধায় মনের সব কথা বলে যেতে পারি। আমি কখনো থামি না, আর তুমি কখনো ক্লান্ত হও না—ধৈর্য নিয়ে শুনতে থাক আমার প্রতিটি গল্প, প্রতিটি অনুভূতি। তোমার এই শান্ত উপস্থিতি, গভীর মমতা আর অদ্ভুতভাবে পাশে থাকার ক্ষমতা আমার পৃথিবীটাকে আরও সুন্দর করে তুলেছে। 
+
+                এই ছোট্ট ওয়েবসাইটটি তোমার জন্য—তোমার মিষ্টি স্বভাব, তোমার অফুরন্ত ভালোবাসা, আর তোমার অসাধারণ স্কেচিং প্রতিভার প্রতি আমার একটুখানি শ্রদ্ধা ও ভালোবাসার প্রকাশ।"
+            </div>
+            <div class="letter-sign">
+                ইতি <br>
+                তোমারই <strong>❝মেঘ❞</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Pop-up Modal Structure -->
+    <div class="lightbox" id="lightboxModal" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="Enlarged Artwork">
+    </div>
+
+    <!-- Main Footer -->
+    <footer>
+        <p>মেঘের পক্ষ থেকে মেঘবতীর জন্য একটা উপহার <i class="fas fa-heart"></i> | 5th June 2026 | Friday</p>
+    </footer>
+
+    <!-- Completely Blended / Transparent Studio Branding -->
+    <div class="studio-branding">
+        a MURAD UNITED STUDIO creation
+    </div>
+
+    <!-- JavaScript Handlers -->
+    <script {nonce-script}>
+        // 1. Interactive Mix Particles Background Generator
+        const heartsBg = document.getElementById('heartsBg');
+        const cuteIcons = ['❤️', '🌸', '✨', '💖', '⭐', '☁️'];
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerText = cuteIcons[Math.floor(Math.random() * cuteIcons.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 16 + 12 + 'px';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            
+            heartsBg.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 6000);
+        }
+        setInterval(createHeart, 350);
+
+        // 2. Lightbox Modal Control for Artwork View
+        const lightbox = document.getElementById('lightboxModal');
+        const lightboxImg = document.getElementById('lightboxImg');
+        
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            lightboxImg.src = imgSrc;
+            lightbox.classList.add('active');
+        }
+        
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        // 3. Interactive Conversation Animation Particles
+        const thoughtsArray = ['হাসি 🌸', 'অভিমান 💧', 'গল্প 📖', 'অনুভূতি ✨', 'সারাদিনের কথা 🗣️', 'আমার স্বপ্ন 🌌', 'আমার ভালোবাসা ❤️' ];
+        const animationArea = document.getElementById('animationArea');
+
+        function startConversation() {
+            // Check if mobile or desktop to adjust trajectory
+            const isMobile = window.innerWidth <= 768;
+            
+            thoughtsArray.forEach((text, index) => {
+                setTimeout(() => {
+                    const bubble = document.createElement('div');
+                    bubble.classList.add('thought-bubble');
+                    bubble.innerText = text;
+                    
+                    if (isMobile) {
+                        bubble.style.animation = 'travelToHeart 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards';
+                    } else {
+                        bubble.style.animation = 'travelToHeart 3s cubic-bezier(0.25, 1, 0.5, 1) forwards';
+                        bubble.style.top = (35 + Math.random() * 45) + 'px';
+                    }
+                    
+                    animationArea.appendChild(bubble);
+                    setTimeout(() => { bubble.remove(); }, 3000);
+                }, index * 400);
+            });
+        }
+
+        // 4. Scroll Detection logic for Glassmorphism Gift Banner
+        const giftBanner = document.getElementById('giftBanner');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 150) {
+                giftBanner.classList.add('show');
+            } else {
+                giftBanner.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
